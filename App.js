@@ -41,7 +41,7 @@ export default function App() {
       id :'1'
     },
     {
-      content: "test3",
+      content: "test",
       id:'2'
     }
   ])
