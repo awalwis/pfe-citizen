@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button,TextInput, AsyncStorage } from 'react-native';
+import { Text, View, StyleSheet, Button,TextInput/*, AsyncStorage*/ } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import Camera from './component/Camera'
 const CreateNew = (props)=>{
@@ -24,25 +24,25 @@ export default function App() {
   const addNew = (nom) =>{
     setName(nom)
     setNameEnter(true);
-    try{
-      AsyncStorage.setItem(
-        '1',
-        name
-      )
-    }catch (error){
+    // try{
+    //   AsyncStorage.setItem(
+    //     '1',
+    //     name
+    //   )
+    // }catch (error){
 
-    }
+    // }
   }
-  const _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('TASKS');
-      if (value !== null) {
-        setName(value)
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
+  // const _retrieveData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('TASKS');
+  //     if (value !== null) {
+  //       setName(value)
+  //     }
+  //   } catch (error) {
+  //     // Error retrieving data
+  //   }
+  // };
   
 
   return (
