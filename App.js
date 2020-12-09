@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button,TextInput } from 'react-native';
+import { Text, View, StyleSheet, Button,TextInput, AsyncStorage } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import Camera from './component/Camera'
 const CreateNew = (props)=>{
@@ -24,7 +24,26 @@ export default function App() {
   const addNew = (nom) =>{
     setName(nom)
     setNameEnter(true);
+    try{
+      AsyncStorage.setItem(
+        '1',
+        name
+      )
+    }catch (error){
+
+    }
   }
+  const _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('TASKS');
+      if (value !== null) {
+        setName(value)
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  
 
   return (
     <View
@@ -34,8 +53,8 @@ export default function App() {
         justifyContent: 'center',
       }}>
         {!nameEnter && <CreateNew addNew={addNew}></CreateNew>}
-        <Text>{name}</Text>
         {doitScanner && <Camera></Camera>}
+       
         {!doitScanner && nameEnter && <Button title={'tap to Scan'} onPress={() => setDoitScanner(true)}/>}
         {doitScanner && <Button title={'stop scan'} onPress={()=> setDoitScanner(false)}/>}
     </View>

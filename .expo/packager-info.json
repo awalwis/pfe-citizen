@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 10983,
+  "expoServerNgrokUrl": "https://4q-3ky.anonymous.pfe-citizen.exp.direct",
+  "packagerNgrokUrl": "https://packager.4q-3ky.anonymous.pfe-citizen.exp.direct",
+  "ngrokPid": 11177
 }
