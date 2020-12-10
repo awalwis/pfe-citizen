@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button,TextInput/*, AsyncStorage*/ } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import Camera from './component/Camera'
+import axios from 'axios';
+// import { json } from 'body-parser';
 const CreateNew = (props)=>{
   const [name , setName] = useState('')
   const handleSubmit=(e)=>{
@@ -16,6 +18,16 @@ const CreateNew = (props)=>{
     </View>
   )
 }
+const postName=(name) =>{
+  axios.post('example/post',{
+    title: 'test',
+    body: name
+  }).then(function(response){
+    alert(JSON.stringify(response.data));
+  }).catch(function(error){
+    alert(error.message)
+  })
+}
 export default function App() {
   const [doitScanner, setDoitScanner] = useState(false);
   const [name, setName] = useState("");
@@ -24,6 +36,7 @@ export default function App() {
   const addNew = (nom) =>{
     setName(nom)
     setNameEnter(true);
+    postName(nom)
     // try{
     //   AsyncStorage.setItem(
     //     '1',
